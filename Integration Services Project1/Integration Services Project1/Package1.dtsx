@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{A402D6A6-3FEF-43C5-91C6-32B186007525}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{CD866745-4B59-4615-ABA2-981C2AC177FE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -25,7 +25,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Data">
       <DTS:VariableValue
-        DTS:DataType="7">5/26/2019 1:19:07 PM</DTS:VariableValue>
+        DTS:DataType="7">5/27/2019 11:10:36 AM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -1533,17 +1533,29 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5BACDD6A-6686-457E-9599-C8BADE51E295}"
-          SQLTask:SqlStatementSource="Insert Into Logi(User::Data,User::User,User::Paczka);"
+          SQLTask:SqlStatementSource="INSERT INTO Logi&#xA;                         (Datawywołania, Użytkownik, Nazwa_Paczki)&#xA;VALUES        (?,?,?)"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
-            SQLTask:ResultName="Data"
+            SQLTask:ResultName=" Data"
             SQLTask:DtsVariableName="User::Data" />
-          <SQLTask:ResultBinding
-            SQLTask:ResultName="User"
-            SQLTask:DtsVariableName="User::User" />
-          <SQLTask:ResultBinding
-            SQLTask:ResultName="Paczka"
-            SQLTask:DtsVariableName="User::Paczka" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::Data"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="7"
+            SQLTask:ParameterSize="0" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::Paczka"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="20" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="NewParameterName"
+            SQLTask:DtsVariableName="User::User"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="20" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -1586,6 +1598,10 @@
           Size="163,42"
           Id="Package\Execute SQL Task"
           TopLeft="218,149" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Execute SQL Task 1"
+          TopLeft="216,359" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="300,191">
@@ -1608,10 +1624,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Execute SQL Task 1"
-          TopLeft="216,359" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="301.25,302">
@@ -1641,15 +1653,15 @@
     design-time-name="Package\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Data Flow Task\Flat File Source"
-          TopLeft="294,141" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="171,42"
           Id="Package\Data Flow Task\OLE DB Destination"
           TopLeft="278.5,395.5" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task\Flat File Source"
+          TopLeft="294,141" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Flat File Source Output]"
           TopLeft="366.75,183">
@@ -1669,7 +1681,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
