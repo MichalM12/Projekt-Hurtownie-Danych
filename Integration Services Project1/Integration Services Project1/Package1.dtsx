@@ -7,49 +7,15 @@
   DTS:CreatorName="DESKTOP-EH2T9C0\Damaskus"
   DTS:DTSID="{D2C886ED-2FDD-4033-BE77-53DDF442DCBA}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.1100.123"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
   DTS:LocaleID="1045"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{5D6B3FD0-BCBB-4BF0-8DF5-925149A7FAA8}">
+  DTS:VersionBuild="59"
+  DTS:VersionGUID="{8E1C02F2-DEAF-406F-B3E7-149C2CA9A686}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{6CB2A711-4A39-4D9D-8633-C342A0001665}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[System::StartTime]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="Data">
-      <DTS:VariableValue
-        DTS:DataType="7">5/27/2019 11:10:36 AM</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{093A5065-AA5B-4C3E-A622-1F3E975CFECF}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[System::PackageName]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="Paczka">
-      <DTS:VariableValue
-        DTS:DataType="8">Package1</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{EC5BEF29-D1CF-44D2-A24D-AC4E228F080B}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="@[System::CreatorName]"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="User">
-      <DTS:VariableValue
-        DTS:DataType="8">DESKTOP-EH2T9C0\Damaskus</DTS:VariableValue>
-    </DTS:Variable>
-  </DTS:Variables>
+  <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\Data Flow Task"
@@ -1533,29 +1499,26 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{5BACDD6A-6686-457E-9599-C8BADE51E295}"
-          SQLTask:SqlStatementSource="INSERT INTO Logi&#xA;                         (Datawywołania, Użytkownik, Nazwa_Paczki)&#xA;VALUES        (?,?,?)"
-          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-          <SQLTask:ResultBinding
-            SQLTask:ResultName=" Data"
-            SQLTask:DtsVariableName="User::Data" />
+          SQLTask:SqlStatementSource="INSERT INTO Logi&#xA;                         (DataWynkonania, Uzytkownik, Nazwa_Paczki)&#xA;VALUES        (?,?,?)"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
-            SQLTask:ParameterName="NewParameterName"
-            SQLTask:DtsVariableName="User::Data"
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="System::CreationDate"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="7"
             SQLTask:ParameterSize="0" />
           <SQLTask:ParameterBinding
-            SQLTask:ParameterName="NewParameterName"
-            SQLTask:DtsVariableName="User::Paczka"
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::UserName"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="129"
-            SQLTask:ParameterSize="20" />
+            SQLTask:ParameterSize="-1" />
           <SQLTask:ParameterBinding
-            SQLTask:ParameterName="NewParameterName"
-            SQLTask:DtsVariableName="User::User"
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="System::PackageName"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="129"
-            SQLTask:ParameterSize="20" />
+            SQLTask:ParameterSize="-1" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
